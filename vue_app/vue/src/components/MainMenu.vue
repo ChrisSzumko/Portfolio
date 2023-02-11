@@ -12,7 +12,8 @@
 
 <script>
 export default {
-  name: "MainMenu"
+  name: "MainMenu",
+
 }
 </script>
 
@@ -24,7 +25,6 @@ export default {
   height: 60px;
   justify-content: center;
   align-items: center;
-  /*border-bottom: 1px rgba(25,25,25,0.1) solid;*/
   background: rgba( 255, 255, 255, 0.25 );
   backdrop-filter: blur( 8px );
   -webkit-backdrop-filter: blur( 8px );

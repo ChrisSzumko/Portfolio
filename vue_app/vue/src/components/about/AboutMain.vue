@@ -1,6 +1,6 @@
 <template>
   <div class="about_me_wrapper">
-    <img class="component_bg" :src="require('@/assets/images/bg2.webp')">
+    <img class="component_bg" :src="require('@/assets/images/bg3.webp')">
     <!--  Main About Me Box  -->
     <div class="about_me_box box_bg">
       <div class="about_me_title">Krzysztof Szumko</div>
@@ -11,10 +11,18 @@
         dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit,
         sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam
         est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius
-        modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima
+        modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.
+      </div>
+      <div class="about_me_desc">
+        Ut enim ad minima
         veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea
         commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam
         nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?
+      </div>
+      <div class="about_me_desc">
+        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,
+        totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae
+        dicta sunt explicabo.
       </div>
     </div>
     <div class="media_box box_bg">
@@ -35,7 +43,6 @@ export default {
 .component_bg {
   display: flex;
   height: 100vh;
-  /*width: 100vw;*/
   position: fixed;
   top:0;
   left: 0;
@@ -71,8 +78,6 @@ export default {
 .about_me_box {
   display: flex;
   flex-flow: column;
-  /*height: 40vh;*/
-  /*max-height: 450px;*/
   width: 90vw;
   max-width: 800px;
   padding: 15px;
@@ -102,7 +107,7 @@ export default {
   flex: 9;
   justify-content: flex-start;
   align-items: flex-start;
-  padding: 15px;
+  padding: 1em;
   font-size: 15px;
 }
 .media_box {
@@ -111,53 +116,17 @@ export default {
   align-items: center;
   height: 100px;
   width: 90vw;
-  max-width: 800px;
-  padding-left: 15px;
-  padding-right: 15px;
+  max-width: 380px;
 }
 .link_icon {
   display: flex;
-  height: 60px;
-  width: 60px;
-  filter: invert(50%) blur(1px);
+  height: 35px;
+  width: 35px;
+  filter: invert(50%);
   cursor: pointer;
 }
 .link_icon:hover {
   transition: 1s;
-  filter: invert(0%);
-	-webkit-animation: puff-in-center 0.7s cubic-bezier(0.470, 0.000, 0.745, 0.715) both;
-  animation: puff-in-center 0.7s cubic-bezier(0.470, 0.000, 0.745, 0.715) both;
-}
-@-webkit-keyframes puff-in-center {
-  0% {
-    -webkit-transform: scale(2);
-            transform: scale(2);
-    -webkit-filter: blur(4px);
-            filter: blur(4px);
-    opacity: 0;
-  }
-  100% {
-    -webkit-transform: scale(1);
-            transform: scale(1);
-    -webkit-filter: blur(0px);
-            filter: blur(0px);
-    opacity: 1;
-  }
-}
-@keyframes puff-in-center {
-  0% {
-    -webkit-transform: scale(2);
-            transform: scale(2);
-    -webkit-filter: blur(4px);
-            filter: blur(4px);
-    opacity: 0;
-  }
-  100% {
-    -webkit-transform: scale(1);
-            transform: scale(1);
-    -webkit-filter: blur(0px);
-            filter: blur(0px);
-    opacity: 1;
-  }
+  filter: invert(0%) drop-shadow(2px 2px 4px rgb(25 25 25 / 0.2));
 }
 </style>

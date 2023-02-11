@@ -1,6 +1,4 @@
 <template>
-<!--  <h2>Props from Django:</h2>-->
-<!--  <p>{{fromDjango}}</p>-->
   <div class="main_bg">
     <MainMenu />
     <div class="content_wrapper">
@@ -24,7 +22,11 @@ export default {
     MainMenu
   },
   mounted() {
-    this.$router.push(this.fromDjango)
+    this.$router.push(this.fromDjango);
+    // const component = this;
+    // window.setTimeout(function (){
+    //   console.log(component.$route.path);
+    // }, 2 * 1000)
   }
 }
 </script>
