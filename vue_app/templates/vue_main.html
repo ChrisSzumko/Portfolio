@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>K.Szumko</title>
+</head>
+<body>
+{% load static %}
+<link rel="stylesheet" href="{% static 'vue_app/css/app.css' %}">
+<div id="example_vue_app_container"></div>
+{{ example_vue_app_props|json_script:"example_vue_app_props" }}
+<script src="{% static 'vue_app/js/app.js' %}"></script>
+<script src="{% static 'vue_app/js/chunk-vendors.js' %}"></script>
+</body>
+</html>
