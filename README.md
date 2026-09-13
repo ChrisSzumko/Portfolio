@@ -1,145 +1,87 @@
-# Django Vue Template
+<h1 align="center">Krzysztof Szumko</h1>
 
-This is an example project showing how a Vue application can be integrated into Django.
+<p align="center"><b>Senior Software Engineer</b></p>
 
-## Installation
+<p align="center">A portfolio of production systems I've designed, built, and shipped — not toy demos.</p>
 
-In the Django project root directory: `pip install -r requirements.txt`
+<div align="center">
 
-In the my_django_app/example_vue_app/ directory: `npm install`
+![Projects](https://img.shields.io/badge/Projects-6-1f6feb?style=for-the-badge)
+![In Production](https://img.shields.io/badge/In%20Production-2-2ea44f?style=for-the-badge)
 
-## How it Works
+</div>
 
-There are 2 main factors to consider here:
-1) Setting up the Django template to allow the Vue application to mount to it
-2) Placing built Vue static files in a location Django can find
-3) Passing data from Django's views into the Vue application
+<p align="center">
+  <a href="https://github.com/ChrisSzumko">GitHub (Personal)</a> ·
+  <a href="https://github.com/kszumko">GitHub (Work)</a> ·
+  <a href="https://www.linkedin.com/in/kszumko/">LinkedIn</a> ·
+  <a href="mailto:kszumko@gmail.com">Email</a>
+</p>
 
-### 1) Setting up the Django template
-Vue needs an empty `<div>` element to mount to, and then we need to load in the Vue stylesheet and JavaScript files.
-This means the bare minimum HTML body looks something like this:
-```html
-<body>
-{% load static %}
-<link rel="stylesheet" href="{% static 'example_vue_app/css/app.css' %}">
-<div id="example_vue_app_container"></div>
-<script src="{% static 'example_vue_app/js/app.js' %}"></script>
-<script src="{% static 'example_vue_app/js/chunk-vendors.js' %}"></script>
-</body>
-```
+<br>
 
-With those few lines, you can get a Vue application to run within a Django template. You can of course add any other
-HTML, CSS, or JS above or below this structure.
+## Projects
 
-Of course, you need to let your Vue application know what `<div>` you want it to mount to. That's done in `main.js`:
+Each project below has its own deep-dive showcase — the problem it solved, the decisions behind it, and how it actually works.
 
-```javascript
-import { createApp } from 'vue'
-import App from './App.vue'
+<table align="center" width="680">
+<tr><td colspan="2" align="center">
 
-const vueApp = createApp(App)
-vueApp.mount('#example_vue_app_container')
-```
+<h3 align="center">🟢 <a href="Polaris-Vector-Showcase.md">Polaris Vector</a></h3>
 
-Compared to the standard `main.js` file, we've split the call of `createApp(App).mount('<div ID here>')`
-over 2 lines. That's not strictly necessary, but it comes in handy later if you want to add extra modules in, so I
-recommend it.
+<p align="center">
+  <a href="Polaris-Vector-Showcase.md">
+    <img src="static/pv/PolarisVector-showcase-main.gif" width="640" alt="Polaris Vector touchscreen dashboard, showing a cryogenic vessel render, live temperature and vessel state" />
+  </a>
+</p>
 
-You'll notice that we're looking for a CSS file and two JavaScript ones. The next section will deal with how those files
-are generated in the place where Django expects to find them.
+<p align="center">
+  A production touchscreen control system I designed and built end-to-end — deployed and running unattended across <b>100+ devices</b> in the field, 24/7.
+</p>
 
-### 2) Placing Vue static files in the right location
+<p align="center">
+  <img src="https://img.shields.io/badge/Status-Deployed-2ea44f?style=flat-square" />
+  <img src="https://img.shields.io/badge/Stack-Django%20%7C%20Vue%203%20%7C%20Celery%20%7C%20PostgreSQL-1f6feb?style=flat-square" />
+  <img src="https://img.shields.io/badge/Compliance-Annex%2011-blueviolet?style=flat-square" />
+</p>
 
-This is done by configuring `vue.config.js` correctly. The main settings are the `publicPath` and `outputDir` which need
-to match one of the directories you've configured Django to check for static files.
+<p align="center"><a href="Polaris-Vector-Showcase.md"><b>Read the full showcase →</b></a></p>
 
-```javascript
-const { defineConfig } = require('@vue/cli-service')
-const path = require("path");
-module.exports = defineConfig({
-  publicPath: '/static/example_vue_app/', // Should be STATIC_URL + path/to/build
-  outputDir: path.resolve(__dirname, '../static/example_vue_app/'), // Output to a directory in STATICFILES_DIRS
-  filenameHashing: false, // Django will hash file names, not webpack
-  runtimeCompiler: true, // See: https://vuejs.org/v2/guide/installation.html#Runtime-Compiler-vs-Runtime-only
-  devServer: {
-    devMiddleware: {
-      writeToDisk: true // Write files to disk in dev mode, so Django can serve the assets
-    },
+</td></tr>
+<tr><td colspan="2" align="center"><br></td></tr>
+<tr><td colspan="2" align="center">
 
-  }
-})
-```
+<h3 align="center">🟢 <a href="CryoHub-Cloud-Showcase.md">CryoHub Cloud</a></h3>
 
-There's one other important setting in here: `devServer.devMiddleware.writeToDisk`. Normally when you run your Vue app
-using `npm run serve`, and access it through the webpack development server, changes you make to the component files are
-automatically loaded into your browser. When you change a component, a 'hotfix' JavaScript or CSS file is loaded into
-the dev server's memory and then served to your browser.
+<p align="center">
+  <a href="CryoHub-Cloud-Showcase.md">
+    <img src="static/cryohub-cloud/CryoHub-Cloud-Main-Showcase.gif" width="640" alt="CryoHub Cloud dashboard, showing a live sensor grid across multiple client sites with status-coded cards" />
+  </a>
+</p>
 
-But in our use-case, Django will be serving the files. So these hotfix files need to be written to disk in a location
-Django can find - otherwise you'd have to `npm run build` every time you changed a component.
+<p align="center">
+  A multi-tenant cryogenics SaaS platform I architected and own end-to-end — a real-time alarm and escalation pipeline that pages the right person, in the right order, until someone acknowledges the problem.
+</p>
 
-That's all good stuff - you now have a Vue application being served by Django, instead of by the webpack dev server.
-Once you've built your static files, they'll be fully functional without you having any servers running except Django.
+<p align="center">
+  <img src="https://img.shields.io/badge/Status-Live-2ea44f?style=flat-square" />
+  <img src="https://img.shields.io/badge/Stack-Django%20%7C%20Vue%203%20%7C%20Flutter%20%7C%20Celery-1f6feb?style=flat-square" />
+  <img src="https://img.shields.io/badge/Tenancy-Multi--Tenant-blueviolet?style=flat-square" />
+</p>
 
-But we also want to be able to get data from Django into our Vue apps. You could do that by having your Vue app make
-API calls (and that's the best option for anything which you want to validate - e.g. if you want to check a user has
-access to a resource).
+<p align="center"><a href="CryoHub-Cloud-Showcase.md"><b>Read the full showcase →</b></a></p>
 
-But for initial data, we can pass props into the Vue application...
+</td></tr>
+<tr><td colspan="2" align="center"><h3>Coming Soon</h3></td></tr>
+<tr><th scope="col">Project</th><th scope="col">Status</th></tr>
+<tr><td>Quantum API</td><td>🚧 Showcase in progress</td></tr>
+<tr><td>Nexus</td><td>🚧 Showcase in progress</td></tr>
+<tr><td>Virtual Cryolog</td><td>🚧 Showcase in progress</td></tr>
+<tr><td>Avior Bridge</td><td>🚧 Showcase in progress</td></tr>
+</table>
 
-### 3) Passing data from Django into Vue
+<br>
 
-Vue application props need to be a JavaScript object, which for our purposes means we need JSON data stored somewhere
-in our Django template. This is best done with the `|json_script` Django template tag - see the docs for details.
-
-Implementing it is pretty simple. Add the object you want to pass into your Vue app into your template context:
-
-```python
-from django.shortcuts import render
-
-def example_vue_app(request):
-    context = {
-        'example_vue_app_props': {
-            'fromDjango': 'A string passed in as a prop from Django'
-        }
-    }
-    return render(request, 'my_django_app/example_vue_app.html', context=context)
-```
-
-Next, you'll want to update your template to do something with these props. Use the template tag to put them in a 
-`<script>` tag with the ID `#example_vue_app_props`:
-
-```html
-{{ example_vue_app_props|json_script:"example_vue_app_props" }}
-```
-
-Then, update your Vue application to expect props with the same names as the keys in your Python dictionary. Here I 
-provide a default value, so you can easily tell if the prop has successfully been passed in to your application:
-
-```javascript
-export default {
-  name: 'App',
-  props: {
-    fromDjango: {
-      type: String,
-      default() {return "This is the default value - not provided by Django"}
-    }
-  },
-}
-```
-
-The final step is to load the JSON from the `<script>` tag we created, and pass it in to the Vue app as props. This is
-done in your Vue app's `main.js`. The props are passed as the second argument to `createApp`. Updated `main.js`:
-
-```javascript
-import { createApp } from 'vue'
-import App from './App.vue'
-
-const propJson = document.getElementById('example_vue_app_props').textContent
-const props = JSON.parse(propJson)
-
-const vueApp = createApp(App, props)
-vueApp.mount('#example_vue_app_container')
-```
-
-If all has worked well, the values you passed in as props will be available to `App.vue`.
+<p align="center">
+  <sub>More showcases are on their way — check back soon, or reach out above.</sub>
+</p>
