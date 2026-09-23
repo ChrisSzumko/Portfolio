@@ -79,7 +79,7 @@ Each project below has its own deep-dive showcase — the problem it solved, the
 
 <p align="center">
   <a href="AviorBridge-Showcase.md">
-    <img src="static/aviorbridge/AviorBridgeMain.png" width="640" alt="AviorBridge admin panel, showing Avior devices, data, event logs and scheduled periodic tasks" />
+    <img src="static/aviorbridge/Screenshot_20260923_141633.png" width="640" alt="AviorBridge admin panel, showing Avior devices, data, event logs and scheduled periodic tasks" />
   </a>
 </p>
 
