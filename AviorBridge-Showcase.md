@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="static/aviorbridge/AviorBridgeMain.png" width="760" alt="AviorBridge admin panel, showing Avior devices, data, event logs and scheduled periodic tasks" />
+  <img src="static/aviorbridge/Screenshot_20260923_141633.png" width="760" alt="AviorBridge admin panel, showing Avior devices, data, event logs and scheduled periodic tasks" />
 </p>
 
 <h1 align="center">AviorBridge</h1>
