@@ -78,6 +78,9 @@ The worker supports multiple generations of cryogenic equipment through explicit
 | **Avoid fleet-wide blockage** | Logs ordinary per-device errors and continues with the next configured device. |
 | **Retain completed progress** | Writes all in-memory checkpoints once at the end of the cycle, including during an interrupted cycle. |
 
+> [!NOTE]
+> **Silence is treated as an incident.** VirtualCryolog publishes an AWS CloudWatch metric after every completed cycle, which drives heartbeat-style alarms: if a host stops syncing — crashed service, lost network, stuck database — CloudWatch raises an alarm even though no error was ever sent. Cryolog servers that monitor many critical vessels are therefore actively covered, not just assumed to be healthy.
+
 <br>
 
 <a name="architecture"></a>
