@@ -5,7 +5,7 @@
 <h1 align="center">QuantumAPI</h1>
 
 <p align="center">
-  <b>A manufacturing data warehouse I took over before launch, deployed to production and later refactored as Lead Engineer — turning device records into traceable, operator-ready workflows aligned with a European partner API.</b>
+  <b>Traceable ATEX device management for 10,000+ devices — a manufacturing data warehouse I took over before launch, deployed to production and later refactored as Lead Engineer, keeping device records aligned with a European partner API.</b>
 </p>
 
 <div align="center">
@@ -15,6 +15,7 @@
 ![Django](https://img.shields.io/badge/Django-3.2-092E20?style=for-the-badge&logo=django&logoColor=white)
 ![MySQL](https://img.shields.io/badge/MySQL-Data%20Warehouse-4479A1?style=for-the-badge&logo=mysql&logoColor=white)
 ![Integration](https://img.shields.io/badge/Integration-REST%20API-2563EB?style=for-the-badge)
+![Scale](https://img.shields.io/badge/Devices-10%2C000%2B%20ATEX-16A34A?style=for-the-badge)
 
 </div>
 
@@ -29,7 +30,7 @@
 
 <br>
 
-QuantumAPI sits between manufacturing operations and an external logistics platform. It receives device records, preserves the manufacturer's source data, gives operators tools to validate and organise it, and synchronises eligible devices and boxes with the partner API.
+QuantumAPI sits between manufacturing operations and an external logistics platform, providing traceable management for 10,000+ ATEX devices. It receives device records, preserves the manufacturer's source data, gives operators tools to validate and organise it, and synchronises eligible devices and boxes with the partner API.
 
 **My role: Lead Engineer · delivery to production, integration, refactoring and technical leadership**
 

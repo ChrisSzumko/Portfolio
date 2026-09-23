@@ -11,6 +11,8 @@
 <div align="center">
 
 ![Status](https://img.shields.io/badge/Status-Deployed-2ea44f?style=for-the-badge)
+![Role](https://img.shields.io/badge/Role-Sole%20Engineer-6f42c1?style=for-the-badge)
+![Memory](https://img.shields.io/badge/Memory-10%C3%97%20Optimisation-orange?style=for-the-badge)
 ![Rust](https://img.shields.io/badge/Back--end-Rust-000000?style=for-the-badge&logo=rust&logoColor=white)
 ![Tauri](https://img.shields.io/badge/Tauri-v1-24C8DB?style=for-the-badge&logo=tauri&logoColor=white)
 ![Vue](https://img.shields.io/badge/Vue.js-3-4FC08D?style=for-the-badge&logo=vuedotjs&logoColor=white)
@@ -25,6 +27,12 @@
   <a href="#visuals">Visuals</a> ·
   <a href="#design">Design</a>
 </p>
+
+<br>
+
+**My role: Sole engineer · idea to production — concept, hardware selection, Rust back-end, Vue interface and deployment**
+
+Nexus was my idea and my execution: I designed and built the whole device, from the Rust back-end and the Tauri shell to the touchscreen UI and the CryoHub activation flow.
 
 <br>
 
@@ -86,7 +94,7 @@ flowchart LR
     </td>
     <td width="33%" valign="top">
       <h3 align="center"><img src="static/nexus/feather.svg" alt="Feather icon" width="20"> Tiny footprint</h3>
-      <p align="center">Rust back-end and Tauri's native webview instead of a bundled browser runtime.</p>
+      <p align="center">A Rust back-end and Tauri's native webview instead of a bundled browser runtime — a 10× memory optimisation on resource-constrained hardware.</p>
     </td>
     <td width="33%" valign="top">
       <h3 align="center"><img src="static/nexus/pointer.svg" alt="Pointer icon" width="20"> Touch-first</h3>
@@ -127,7 +135,7 @@ flowchart LR
 <h2 align="center"><img src="static/nexus/sparkles.svg" alt="Sparkles icon" width="24"> Design</h2>
 
 - **Black-box by intent:** once linked, Nexus needs no keyboard, mouse or remote session — the touchscreen covers setup, monitoring and diagnosis.
-- **Low footprint:** keeping all logic in Rust and using Tauri's native webview lets a small SBC run the full UI and sync loop continuously.
+- **Low footprint:** keeping all logic in Rust and using Tauri's native webview delivered a 10× memory optimisation, letting a small SBC run the full UI and sync loop continuously.
 - **One device, many profiles:** the same box serves temperature/level controllers and multi-channel oxygen panels by switching its hardware profile, not its software.
 - **Glanceable status:** readings, connectivity and the time since the last update stay visible at all times, and the live log shows every reading and upload as it happens.
 - **AI-assisted visual design:** Midjourney drove the UI concepts and artwork, delivering a polished, consistent look without a dedicated design budget.

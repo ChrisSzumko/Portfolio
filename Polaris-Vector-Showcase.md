@@ -5,15 +5,16 @@
 <h1 align="center">Polaris Vector</h1>
 
 <p align="center">
-  <b>A production touchscreen control system I designed and built end-to-end —
-  now deployed and running unattended in the field, 24/7.</b>
+  <b>A production touchscreen control system I architected and delivered, leading an 8-person cross-functional team
+  from concept to production rollout in 8 months — now running unattended on 100+ connected devices, 24/7.</b>
 </p>
 
 <div align="center">
 
 ![Status](https://img.shields.io/badge/Status-Deployed-2ea44f?style=for-the-badge)
 ![Fleet](https://img.shields.io/badge/Fleet-100%2B%20Devices%20in%20the%20Field-6f42c1?style=for-the-badge)
-![Compliance](https://img.shields.io/badge/Compliance-Annex%2011-blueviolet?style=for-the-badge)
+![Team](https://img.shields.io/badge/Team-Led%208%20Engineers%2C%208%20Months%20to%20Production-6f42c1?style=for-the-badge)
+![Compliance](https://img.shields.io/badge/Compliance-EU%20GMP%20Annex%2011-blueviolet?style=for-the-badge)
 ![Stack](https://img.shields.io/badge/Stack-Django%20%7C%20Vue%203%20%7C%20Celery%20%7C%20PostgreSQL-1f6feb?style=for-the-badge)
 ![Hardware](https://img.shields.io/badge/Runtime-Linux%20SBC%20%2F%20Touchscreen%20Kiosk-orange?style=for-the-badge)
 
@@ -33,14 +34,15 @@
 
 ## Highlights
 
-- **Architected and built a real industrial product from scratch** — a touchscreen system that monitors and controls physical cryogenic hardware, now deployed on **over 100 devices** running unattended in the field.
+- **Architected a real industrial product from scratch and led an 8-person cross-functional team to production rollout in 8 months** — a touchscreen system that monitors and controls physical cryogenic hardware, now supporting **over 100 connected devices** running unattended in the field.
 - **Made and owned the core technology bet** that still shapes the product today: Django + Vue 3 over the "obvious" embedded-Python choices, years before it was the safe option.
 - **Picked the hardware platform, too** — moved the fleet from Raspberry Pi to LattePanda for reliability and price/performance, after hitting real problems in the field.
-- **Built compliance into the OS layer, not bolted on after.** Designed the on-device Linux user architecture to meet **Annex 11** requirements for regulated computerised systems from day one.
+- **Built EU GMP Annex 11 compliance in, not bolted on after** — tamper-evident audit trails, attributable user actions and controlled workflows, down to an on-device Linux user architecture designed for regulated computerised systems from day one.
+- **Built multi-tier alarm propagation and escalation logic** covering generation, acknowledgement, muting and feedback states, with full auditability.
 - **Made the operational calls too, not just the technical ones** — including how a fleet this size gets supported remotely, day to day.
 - **Designed the trust boundary between software and hardware**, so the interface never shows an operator something the physical equipment hasn't actually confirmed.
 - **Delivered a zero-downtime migration** of a live cloud integration to a new backend generation, with nothing in the field ever going offline.
-- **Own the entire stack** — backend, frontend, background processing, deployment and quality tooling — end to end.
+- **Owned the architecture across the entire stack** — backend, frontend, background processing, deployment and quality tooling — while leading the team that built it.
 
 <br>
 
@@ -124,15 +126,15 @@ flowchart LR
 
 The interesting problems here weren't "make a web app" — they were the guarantees that have to hold when real, physical equipment is on the other end.
 
-**Hardware-first design.** I built the system so it never assumes success. An operator action or a settings change is only treated as real once the equipment itself confirms it — not the moment a request is saved. That single principle runs through the backend, the API and the UI, and it's the reason operators can trust what the screen tells them.
+**Hardware-first design.** The system never assumes success. An operator action or a settings change is only treated as real once the equipment itself confirms it — not the moment a request is saved. That single principle runs through the backend, the API and the UI, and it's the reason operators can trust what the screen tells them.
 
 **Safe access to a single physical connection.** The equipment is reachable over one connection at a time. I designed the on-device process architecture so exactly one path can ever touch it, removing an entire class of race conditions by construction rather than by convention.
 
-**Telemetry that scales on modest hardware.** The equipment can report far more often than a small embedded database needs to store. I built intelligent throttling so the history stays meaningful and useful without the device's storage or performance degrading over time.
+**Telemetry that scales on modest hardware.** The equipment can report far more often than a small embedded database needs to store. Intelligent throttling keeps the history meaningful and useful without the device's storage or performance degrading over time.
 
 **Cloud sync that never risks the vessel.** Uploading data to our cloud fleet platform is fully decoupled from on-site control. A slow network, a cloud outage, or no internet at all never affects safety or operation where it matters.
 
-**Live migration, zero downtime.** I migrated the cloud integration to a new backend generation while the previous one kept serving existing devices — nothing in the field ever went offline during the transition.
+**Live migration, zero downtime.** I led the migration of the cloud integration to a new backend generation while the previous one kept serving existing devices — nothing in the field ever went offline during the transition.
 
 <br>
 
@@ -173,7 +175,7 @@ The interesting problems here weren't "make a web app" — they were the guarant
 <tr>
   <td><b>Security &amp; compliance</b></td>
   <td>🔒</td>
-  <td>Annex 11–compliant design: the application and the kiosk display run under separate, isolated Linux accounts.</td>
+  <td>EU GMP Annex 11–compliant design: tamper-evident audit trails and attributable user actions, with the application and the kiosk display running under separate, isolated Linux accounts.</td>
 </tr>
 </table>
 

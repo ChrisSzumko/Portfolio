@@ -5,7 +5,7 @@
 <h1 align="center">CryoHub Cloud</h1>
 
 <p align="center">
-  <b>A multi-tenant cryogenics platform I architected and own end-to-end —
+  <b>A multi-tenant cryogenics platform I architected from greenfield and own end-to-end —
   turning unglamorous sensor data into a real-time monitoring and escalation product.</b>
 </p>
 
@@ -16,6 +16,7 @@
 ![Escalation](https://img.shields.io/badge/Escalation-Voice%20%2B%20Push-blueviolet?style=for-the-badge)
 ![Stack](https://img.shields.io/badge/Stack-Django%20%7C%20Vue%203%20%7C%20Flutter%20%7C%20Celery-1f6feb?style=for-the-badge)
 ![Infra](https://img.shields.io/badge/Infra-AWS%20%2B%20IONOS-orange?style=for-the-badge)
+![Compliance](https://img.shields.io/badge/Compliance-EU%20GMP%20Annex%2011-blueviolet?style=for-the-badge)
 
 </div>
 
@@ -35,13 +36,17 @@
 
 - **Principal architect and full owner of the backend and cloud infrastructure** for a multi-tenant SaaS platform (gen-2 of the CryoHub product line) — live, self-service, and serving multiple customers on shared infrastructure.
 - **Designed the multi-tenant data model from the ground up**: customers are issued their own keys and self-govern sites, sensors, users and escalation policies, fully isolated from every other tenant on the same infrastructure.
-- **Built a real-time alarm and escalation pipeline** that pages the right person, in the right order, until someone actually acknowledges the problem — not just a fire-and-forget notification.
-- **Made a deliberate two-cloud infrastructure bet**: AWS for flexibility and managed database operations, IONOS for order-of-magnitude cheaper raw compute where it's the bulk of the always-on workload.
-- **Diagnosed and fixed a production scaling failure** in the escalation scheduler by redesigning it around periodic sweeps instead of per-event Celery scheduling.
+- **Built sub-second real-time alerting and escalation** with fan-out delivery, severity routing and audit trails (Celery, WebSockets, Novu) — paging the right person, in the right order, until someone actually acknowledges the problem.
+- **Re-architected the alarm engine for V2** — configurable rules, cooldown policies, auto-clearance jobs and admin tooling replacing hardcoded Gen 1 logic.
+- **Delivered EU GMP Annex 11 compliance** through tamper-evident audit trails, attributable user actions, controlled workflows and role-based access control for all safety-critical operations.
+- **Reduced critical API latency 100× (30s → 300ms)** through query optimisation, caching and performance test suites.
+- **Cut infrastructure spend by approximately 80%** with a two-cloud architecture: AWS for managed database operations, WAF and monitoring; IONOS for much cheaper raw compute where it's the bulk of the always-on workload.
+- **Engineered resilient Celery/RabbitMQ infrastructure** with dedicated queues, retry policies and AWS CloudWatch heartbeats — and fixed a production scaling failure in the escalation scheduler by redesigning it around periodic sweeps instead of per-event Celery tasks.
+- **Delivered a CSV/PDF reporting and analytics suite** — heatmaps, gap analysis and synchronised telemetry graphs.
 - **Co-designed and split the frontend 50/50** with a junior engineer I mentored — I drove architecture and layout, they built out components.
 - **Contracted the API surface for a companion Flutter mobile app**, built independently by another senior engineer against the same Django backend.
 - **Migrated legacy CryoHub installations into the platform**, syncing historical sensor and event data so existing customers never lose history.
-- **#1 contributor by a wide margin** — 2,975 commits and the majority of the codebase's history, reflecting sole ownership of the architecture and backend.
+- **Primary technical owner** of the architecture and backend over the product's lifetime — 3.5k+ commits.
 
 <br>
 
@@ -69,7 +74,7 @@ Running a shared platform for multiple paying customers means the decisions outs
 
 - **Distinct delivery paths for distinct jobs.** Push and in-app notifications go through **Novu**; voice escalation goes through **Amazon Connect**. I deliberately kept these separate rather than forcing one interchangeable notification mechanism to do both jobs badly.
 - **Voice escalation is opt-in, not automatic.** It requires an active linked policy and account-level enablement per alarm rule — a hardware-originated alarm can't accidentally trigger a phone call to someone who never asked for one.
-- **Security posture sized for a multi-tenant platform, not a single trusted tool.** AWS WAF and IP/network whitelisting sit in front of the application, AWS CloudWatch covers infrastructure monitoring and alerting, and `django-axes` enforces login-attempt throttling and lockouts.
+- **Security posture sized for a multi-tenant platform, not a single trusted tool.** AWS WAF and IP/network whitelisting sit in front of the application, AWS CloudWatch covers infrastructure monitoring and alerting, and `django-axes` enforces login-attempt throttling and lockouts. Both AWS and IONOS are hardened with secrets management, TLS, strict CORS and CI pipelines.
 - **Mentorship built into the delivery model.** The frontend was split 50/50 with a junior engineer by design — I owned architecture and layout decisions, they owned component implementation, deliberately structured as a growth opportunity rather than just a staffing split.
 - **Contracted, not built in-house.** The Flutter mobile app was commissioned from another senior engineer against an API surface I defined — the right call for a platform that needed a native mobile client without pulling backend focus away from the core platform.
 
@@ -119,7 +124,7 @@ flowchart LR
 2. **Serve** — Django exposes one API contract to both the Vue SPA and the Flutter mobile app, so presentation stays decoupled from domain logic.
 3. **Watch** — Celery workflows evaluate alarm conditions on a periodic sweep, not per-event, so the pipeline scales with data volume.
 4. **Escalate** — a triggered alarm snapshots its policy at that instant and works through contacts in order, via push or voice, until someone acknowledges it.
-5. **Report** — customers turn history into shareable PDF and CSV reports, access-checked server-side against their own tenant and sites.
+5. **Report** — customers turn history into shareable PDF and CSV reports — heatmaps, gap analysis and synchronised telemetry graphs — access-checked server-side against their own tenant and sites.
 
 <br>
 
@@ -161,12 +166,12 @@ The interesting problems here weren't "add another customer" — they were the g
 <tr>
   <td><b>Background work</b></td>
   <td><img src="https://skillicons.dev/icons?i=rabbitmq" height="32" /></td>
-  <td>Celery with periodic sweep-based scheduling — sensor sync, report generation and escalation runs.</td>
+  <td>Celery on RabbitMQ with dedicated queues, retry policies and CloudWatch heartbeats; periodic sweep-based scheduling for sensor sync, report generation and escalation runs.</td>
 </tr>
 <tr>
   <td><b>Cloud infrastructure</b></td>
   <td><img src="https://skillicons.dev/icons?i=aws" height="32" /></td>
-  <td>AWS for managed database operations, WAF and CloudWatch; IONOS for cheap always-on raw compute — a deliberate two-provider split.</td>
+  <td>AWS for managed database operations, WAF and CloudWatch; IONOS for cheap always-on raw compute — a two-provider split that cut infrastructure spend by ~80%.</td>
 </tr>
 <tr>
   <td><b>Notifications</b></td>
@@ -176,7 +181,7 @@ The interesting problems here weren't "add another customer" — they were the g
 <tr>
   <td><b>Security &amp; compliance</b></td>
   <td>🔒</td>
-  <td>AWS WAF, IP/network whitelisting and <code>django-axes</code> login throttling — sized for a shared, multi-tenant platform.</td>
+  <td>EU GMP Annex 11: tamper-evident audit trails, attributable user actions and role-based access control. AWS WAF, IP/network whitelisting, TLS, secrets management and <code>django-axes</code> lockouts — sized for a shared, multi-tenant platform.</td>
 </tr>
 </table>
 
@@ -208,6 +213,7 @@ The interesting problems here weren't "add another customer" — they were the g
 
 - Over **80% Python test coverage**, covering escalation behaviour, APIs, advanced reports and CSV export.
 - Over **90% Vue.js test coverage** (Jest + Vue Test Utils), plus Playwright end-to-end coverage that exercises the app the way an operator actually would.
+- **Performance test suites** guard the critical API paths brought down from 30s to 300ms.
 - **GitHub Actions CI** runs backend and frontend suites on every push and pull request, substituting an in-memory database, broker and channel layer for fast, isolated runs.
 - The whole backend is standardised on **`uv`** and **Ruff**, with a `Makefile` that takes a fresh checkout to a running environment in one command — onboarding speed treated as a deliberate investment, not an afterthought.
 
@@ -220,5 +226,6 @@ The interesting problems here weren't "add another customer" — they were the g
   </sub>
 </p>
 <p align="center">
-  <img src="static/cryohub-cloud/Contributions.png" width="420" alt="CryoHub Cloud contribution history, showing sole ownership of the codebase over multiple years" />
+  <img src="static/cryohub-cloud/Contributions.png" width="420" alt="CryoHub Cloud contribution history, showing primary ownership of the codebase over multiple years" />
 </p>
+<p align="center"><sub>The graph counts only commits to the main branch since September 2022, excluding merges (2,975 of them); the 3.5k+ figure covers all of my CryoHub Cloud V2 work.</sub></p>
