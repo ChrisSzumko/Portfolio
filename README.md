@@ -99,6 +99,30 @@ Each project below has its own deep-dive showcase — the problem it solved, the
 <tr><td colspan="2" align="center"><br></td></tr>
 <tr><td colspan="2" align="center">
 
+<h3 align="center">🟢 <a href="Nexus-Showcase.md">Nexus</a></h3>
+
+<p align="center">
+  <a href="Nexus-Showcase.md">
+    <img src="static/nexus/Screenshot_20260923_152013.png" width="640" alt="Nexus 7-inch touchscreen dashboard in Polaris II mode, showing temperature, level, a live data log and alarm status tiles" />
+  </a>
+</p>
+
+<p align="center">
+  A black-box edge device for cryogenic equipment — a Rust-powered Tauri app on a LattePanda SBC with a 7-inch touchscreen, set up on-site by an engineer and linked to CryoHub with a one-off activation code.
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/Status-Deployed-2ea44f?style=flat-square" />
+  <img src="https://img.shields.io/badge/Stack-Rust%20%7C%20Tauri%20v1%20%7C%20Vue%203-1f6feb?style=flat-square" />
+  <img src="https://img.shields.io/badge/Hardware-LattePanda%20SBC-blueviolet?style=flat-square" />
+</p>
+
+<p align="center"><a href="Nexus-Showcase.md"><b>Read the full showcase →</b></a></p>
+
+</td></tr>
+<tr><td colspan="2" align="center"><br></td></tr>
+<tr><td colspan="2" align="center">
+
 <h3 align="center">🟢 <a href="VirtualCryolog-Showcase.md">VirtualCryolog</a></h3>
 
 <p align="center">
@@ -120,10 +144,30 @@ Each project below has its own deep-dive showcase — the problem it solved, the
 <p align="center"><a href="VirtualCryolog-Showcase.md"><b>Read the full showcase →</b></a></p>
 
 </td></tr>
-<tr><td colspan="2" align="center"><h3>Coming Soon</h3></td></tr>
-<tr><th scope="col">Project</th><th scope="col">Status</th></tr>
-<tr><td>Quantum API</td><td>🚧 Showcase in progress</td></tr>
-<tr><td>Nexus</td><td>🚧 Showcase in progress</td></tr>
+<tr><td colspan="2" align="center"><br></td></tr>
+<tr><td colspan="2" align="center">
+
+<h3 align="center">🟢 <a href="QuantumAPI-Showcase.md">QuantumAPI</a></h3>
+
+<p align="center">
+  <a href="QuantumAPI-Showcase.md">
+    <img src="static/quantum-api/q-api-main-menu.png" width="640" alt="QuantumAPI main menu, showing data views, label tools, device and label entry, QR scanner and admin panel" />
+  </a>
+</p>
+
+<p align="center">
+  A manufacturing data warehouse I took over before launch, deployed to production and later refactored as Lead Engineer — keeping device records, QR-labelled boxes and a European partner API in sync.
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/Status-Deployed-2ea44f?style=flat-square" />
+  <img src="https://img.shields.io/badge/Stack-Django%20%7C%20Tastypie%20%7C%20MySQL%20%7C%20REST-1f6feb?style=flat-square" />
+  <img src="https://img.shields.io/badge/Role-Lead%20Engineer-blueviolet?style=flat-square" />
+</p>
+
+<p align="center"><a href="QuantumAPI-Showcase.md"><b>Read the full showcase →</b></a></p>
+
+</td></tr>
 </table>
 
 <br>
