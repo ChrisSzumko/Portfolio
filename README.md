@@ -20,7 +20,7 @@
 
 <br>
 
-## Projects
+<h2 align="center">Projects</h2>
 
 Each project below has its own deep-dive showcase — the problem it solved, the decisions behind it, and how it actually works.
 
@@ -96,11 +96,34 @@ Each project below has its own deep-dive showcase — the problem it solved, the
 <p align="center"><a href="AviorBridge-Showcase.md"><b>Read the full showcase →</b></a></p>
 
 </td></tr>
+<tr><td colspan="2" align="center"><br></td></tr>
+<tr><td colspan="2" align="center">
+
+<h3 align="center">🟢 <a href="VirtualCryolog-Showcase.md">VirtualCryolog</a></h3>
+
+<p align="center">
+  <a href="VirtualCryolog-Showcase.md">
+    <img src="static/virtual-cryolog/execution-flow.svg" width="640" alt="VirtualCryolog synchronising local Cryolog SQL telemetry with CryoHub Cloud through a checkpointed edge worker" />
+  </a>
+</p>
+
+<p align="center">
+  A replay-safe edge worker I built solo that brings legacy Cryolog monitoring data into CryoHub Cloud — resuming from durable checkpoints after any interruption, without exposing the local database.
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/Status-Deployed-2ea44f?style=flat-square" />
+  <img src="https://img.shields.io/badge/Stack-Python%20%7C%20SQL%20Server%20%7C%20AWS%20%7C%20PyInstaller-1f6feb?style=flat-square" />
+  <img src="https://img.shields.io/badge/Role-Sole%20Developer-blueviolet?style=flat-square" />
+</p>
+
+<p align="center"><a href="VirtualCryolog-Showcase.md"><b>Read the full showcase →</b></a></p>
+
+</td></tr>
 <tr><td colspan="2" align="center"><h3>Coming Soon</h3></td></tr>
 <tr><th scope="col">Project</th><th scope="col">Status</th></tr>
 <tr><td>Quantum API</td><td>🚧 Showcase in progress</td></tr>
 <tr><td>Nexus</td><td>🚧 Showcase in progress</td></tr>
-<tr><td>Virtual Cryolog</td><td>🚧 Showcase in progress</td></tr>
 </table>
 
 <br>
